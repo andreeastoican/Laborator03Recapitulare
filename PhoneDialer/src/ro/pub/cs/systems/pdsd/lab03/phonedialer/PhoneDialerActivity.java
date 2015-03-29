@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 
 class PhoneButtons implements View.OnClickListener {
@@ -114,6 +115,16 @@ public class PhoneDialerActivity extends Activity {
 		});
     }
 
+    
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+		switch(requestCode) {
+		  case 2015:
+		    setResult(resultCode, new Intent());
+		    Toast.makeText(this, "a revenit in Phone cu codul 2015", Toast.LENGTH_LONG).show();
+		    finish();
+		    break;
+		  }
+	}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
