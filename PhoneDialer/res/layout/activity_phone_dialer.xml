@@ -114,13 +114,17 @@
             android:src="@drawable/call"
             />
         
+        <Button
+		    android:id="@+id/add_contact"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="+" />
+        
         <ImageButton 
             android:id="@+id/img_hangup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/hangup"
-            android:layout_columnSpan="2"
-            android:layout_gravity="right"
             />
         
         

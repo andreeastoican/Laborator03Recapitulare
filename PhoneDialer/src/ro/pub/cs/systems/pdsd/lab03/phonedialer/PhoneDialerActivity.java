@@ -44,12 +44,16 @@ class PhoneButtons implements View.OnClickListener {
 		} else {
 			phoneNumberEditText.append(((Button)v).getText());
 		}
+		
+		
 	}
 	
 }
 
 public class PhoneDialerActivity extends Activity {
 
+	final private static int ANOTHER_ACTIVITY_REQUEST_CODE = 2015;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,6 +95,23 @@ public class PhoneDialerActivity extends Activity {
         b9.setOnClickListener(new PhoneButtons("9", this));
         b_star.setOnClickListener(new PhoneButtons("*", this));
         b_diez.setOnClickListener(new PhoneButtons("#", this));
+        
+        Button addButton = (Button) findViewById(R.id.add_contact);
+        addButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				EditText numberEditText = (EditText) findViewById(R.id.phone_number_edit_text);
+				if(numberEditText!=null) {
+					String number = numberEditText.getText().toString();
+					
+					Intent intentAdd = new Intent("ro.pub.cs.systems.pdsd.lab04.contactsmanager.intent.action.ContactsManagerActivity");
+					intentAdd.putExtra("ro.pub.cs.systems.pdsd.lab04.phoneNumber", number);
+					startActivityForResult(intentAdd, 2015);
+				}
+				
+			}
+		});
     }
 
 
